@@ -73,7 +73,7 @@ var countyCoords = {
 		]}
 	]
 }
-var Center = new google.maps.LatLng(14.243262, 60.074924);
+var Center = new google.maps.LatLng(14.243262, 51.074924);
 var map;
 var infoWindow;
 var markers = {};
@@ -86,6 +86,7 @@ function initialize() {
 		center: Center,
 		zoomControl: false,
 		scrollwheel: false,
+		disableDoubleClickZoom: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -119,6 +120,15 @@ function initialize() {
 		 });
 		 tags[countyCoords.counties[i].name] = tag;
 		
+		//hover on the polygon to highlight
+		google.maps.event.addListener(polygon, 'mouseover', function(event){
+			this.setOptions({fillColor: 'black',strokeColor: 'grey'});
+		});
+		
+		//hover on the polygon to highlight
+		google.maps.event.addListener(polygon, 'mouseout', function(event){
+			this.setOptions({fillColor: '#FF0000',strokeColor: '#D4886A'});
+		});
 		
 		//hover on the polygon to show marker and infoWindow
 		google.maps.event.addListener(polygon, 'click', function(){
