@@ -13,7 +13,7 @@
 #map-canvas {
 	
 	width:    100%;
-	height:   600px;
+	height:   300px;
 	
 }
 .labels {
@@ -70,7 +70,7 @@ var countyCoords = {
 		]}
 	]
 }
-var Center = new google.maps.LatLng(14.243262, 60.074924);
+var Center = new google.maps.LatLng(10.243262, 55.074924);
 var map;
 var infoWindow;
 var markers = {};
@@ -79,10 +79,11 @@ var infoWindows = {};
 function initialize() {
 	// Create the map
 	var mapOptions = {
-		zoom: 4,
+		zoom: 3,
 		center: Center,
 		zoomControl: false,
 		scrollwheel: false,
+		disableDoubleClickZoom: true,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
